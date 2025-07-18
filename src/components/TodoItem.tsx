@@ -32,13 +32,17 @@ export const TodoItem: React.FC<Props> = ({
     data-cy="Todo"
     className={cn('todo', todo.completed && 'completed')}
   >
-    <input
-      onChange={() => onTodoCompleteChange(todo.id, !todo.completed)}
-      data-cy="TodoStatus"
-      type="checkbox"
-      className="todo__status"
-      checked={todo?.completed}
-    />
+    {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
+    <label htmlFor={`todo-status-${todo.id}`} className="todo__status-label">
+      <input
+        id={`todo-status-${todo.id}`}
+        onChange={() => onTodoCompleteChange(todo.id, !todo.completed)}
+        data-cy="TodoStatus"
+        type="checkbox"
+        className={cn('todo__status')}
+        checked={todo?.completed}
+      />
+    </label>
 
     {isSelected ? (
       <form
