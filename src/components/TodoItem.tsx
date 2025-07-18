@@ -28,7 +28,6 @@ export const TodoItem: React.FC<Props> = ({
   onSelectedTodoNewValueChange,
 }) => (
   <div
-    onDoubleClick={() => onTodoSelect(todo.id, todo.title)}
     data-cy="Todo"
     className={cn('todo', todo.completed && 'completed')}
   >
@@ -69,7 +68,11 @@ export const TodoItem: React.FC<Props> = ({
       </form>
     ) : (
       <>
-        <span data-cy="TodoTitle" className="todo__title">
+        <span 
+          data-cy="TodoTitle" 
+          className="todo__title"
+          onDoubleClick={() => onTodoSelect(todo.id, todo.title)}
+        >
           {todo.title}
         </span>
 
